@@ -1,0 +1,35 @@
+﻿Compilación iniciada a las 22/12/2021 21:21:15.
+El nivel de detalle de registro está establecido en Normal.     1>Proyecto "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Cpp_pointers.vcxproj" en el nodo 2 (Build destinos).
+     1>PrepareForBuild:
+         Creando directorio "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Release\".
+         Creando directorio "x64\Release\Cpp_pointers.tlog\".
+       InitializeBuildStatus:
+         Se creará "x64\Release\Cpp_pointers.tlog\unsuccessfulbuild" porque se especificó "AlwaysCreate".
+       VcpkgTripletSelection:
+         Using triplet "x64-windows" from "C:\vcpkg\installed\\x64-windows\"
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\CL.exe /c /I"C:\vcpkg\installed\\x64-windows\include" /Zi /nologo /W3 /WX- /diagnostics:column /sdl /O2 /Oi /GL /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Release\\" /Fd"x64\Release\vc142.pdb" /external:W3 /Gd /TP /FC /errorReport:prompt Source.cpp
+         Source.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Release\Cpp_pointers.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\vcpkg\installed\\x64-windows\lib" /LIBPATH:"C:\vcpkg\installed\\x64-windows\lib\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "C:\vcpkg\installed\\x64-windows\lib\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Release\Cpp_pointers.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG:incremental /LTCGOUT:"x64\Release\Cpp_pointers.iobj" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Release\Cpp_pointers.lib" /MACHINE:X64 x64\Release\Source.obj
+         Generando código
+         Previous IPDB not found, fall back to full compilation.
+         All 473 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+         Generación de código finalizada
+         Cpp_pointers.vcxproj -> C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Release\Cpp_pointers.exe
+       AppLocalFromInstalled:
+         pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Release\Cpp_pointers.exe" "C:\vcpkg\installed\\x64-windows\bin" "x64\Release\Cpp_pointers.tlog\Cpp_pointers.write.1u.tlog" "x64\Release\vcpkg.applocal.log"
+         "pwsh.exe" no se reconoce como un comando interno o externo,
+         programa o archivo por lotes ejecutable.
+         El comando "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Release\Cpp_pointers.exe" "C:\vcpkg\installed\\x64-windows\bin" "x64\Release\Cpp_pointers.tlog\Cpp_pointers.write.1u.tlog" "x64\Release\vcpkg.applocal.log"" salió con el código 9009.
+         "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "C:\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Release\Cpp_pointers.exe" "C:\vcpkg\installed\\x64-windows\bin" "x64\Release\Cpp_pointers.tlog\Cpp_pointers.write.1u.tlog" "x64\Release\vcpkg.applocal.log"
+       FinalizeBuildStatus:
+         Se eliminará el archivo "x64\Release\Cpp_pointers.tlog\unsuccessfulbuild".
+         Aplicando tarea Touch a "x64\Release\Cpp_pointers.tlog\Cpp_pointers.lastbuildstate".
+     1>Compilación del proyecto terminada "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Cpp_pointers.vcxproj" (Build destinos).
+
+Compilación correcta.
+    0 Advertencia(s)
+    0 Errores
+
+Tiempo transcurrido 00:00:01.90

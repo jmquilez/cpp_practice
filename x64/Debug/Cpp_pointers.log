@@ -1,0 +1,34 @@
+﻿Compilación iniciada a las 24/12/2021 21:02:05.
+El nivel de detalle de registro está establecido en Normal.     1>Proyecto "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Cpp_pointers.vcxproj" en el nodo 2 (Build destinos).
+     1>InitializeBuildStatus:
+         Aplicando tarea Touch a "x64\Debug\Cpp_pointers.tlog\unsuccessfulbuild".
+       VcpkgTripletSelection:
+         Using triplet "x64-windows" from "C:\vcpkg\installed\\x64-windows\"
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\CL.exe /c /I"C:\vcpkg\installed\\x64-windows\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++latest /Fo"x64\Debug\\" /Fd"x64\Debug\vc142.pdb" /external:W3 /Gd /TP /FC /errorReport:prompt Source.cpp
+         Source.cpp
+     1>C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(61): warning C4172: devolución de dirección de la variable local o temporal: total
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Debug\Cpp_pointers.exe" /INCREMENTAL /ILK:"x64\Debug\Cpp_pointers.ilk" /NOLOGO /LIBPATH:"C:\vcpkg\installed\\x64-windows\debug\lib" /LIBPATH:"C:\vcpkg\installed\\x64-windows\debug\lib\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "C:\vcpkg\installed\\x64-windows\debug\lib\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Debug\Cpp_pointers.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Debug\Cpp_pointers.lib" /MACHINE:X64 x64\Debug\Source.obj
+         Cpp_pointers.vcxproj -> C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Debug\Cpp_pointers.exe
+       AppLocalFromInstalled:
+         pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Debug\Cpp_pointers.exe" "C:\vcpkg\installed\\x64-windows\debug\bin" "x64\Debug\Cpp_pointers.tlog\Cpp_pointers.write.1u.tlog" "x64\Debug\vcpkg.applocal.log"
+         "pwsh.exe" no se reconoce como un comando interno o externo,
+         programa o archivo por lotes ejecutable.
+         El comando "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Debug\Cpp_pointers.exe" "C:\vcpkg\installed\\x64-windows\debug\bin" "x64\Debug\Cpp_pointers.tlog\Cpp_pointers.write.1u.tlog" "x64\Debug\vcpkg.applocal.log"" salió con el código 9009.
+         "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "C:\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Debug\Cpp_pointers.exe" "C:\vcpkg\installed\\x64-windows\debug\bin" "x64\Debug\Cpp_pointers.tlog\Cpp_pointers.write.1u.tlog" "x64\Debug\vcpkg.applocal.log"
+       FinalizeBuildStatus:
+         Se eliminará el archivo "x64\Debug\Cpp_pointers.tlog\unsuccessfulbuild".
+         Aplicando tarea Touch a "x64\Debug\Cpp_pointers.tlog\Cpp_pointers.lastbuildstate".
+     1>Compilación del proyecto terminada "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Cpp_pointers.vcxproj" (Build destinos).
+
+Compilación correcta.
+
+       "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Cpp_pointers.vcxproj" (Build destino) (1) ->
+       (ClCompile destino) -> 
+         C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(61): warning C4172: devolución de dirección de la variable local o temporal: total
+
+    1 Advertencia(s)
+    0 Errores
+
+Tiempo transcurrido 00:00:03.13
