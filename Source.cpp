@@ -117,6 +117,14 @@ struct Bar {
     void print_ad(int i) const {
         std::cout << "Num intended: " << num_ + i << std::endl;
     }
+
+    void print_nc(int& i) {
+        std::cout << "Num print_nc: " << num_ + i << std::endl;
+    }
+
+    void func_test(int& i) {
+        std::cout << "Func test: " << num_ + i << std::endl;
+    }
 };
 
 void notInBar(int& num) {
@@ -138,19 +146,27 @@ void transform() {
     //int thed = Int(5);
     //auto result = std::async(Int.operator+, Int{ 1 }, 2);
 
+    Bar origBar(8743);
+
     std::function<void(const Bar&, int)> f_add = &Bar::print_ad;
     std::function<void(const Bar const&, int)> f_add_m = &Bar::print_ad;
     std::function<void(Bar const&, int)> f_add_r = &Bar::print_ad;
+    std::function<void(Bar&, int&)> f_add_nc = &Bar::print_nc; //cant go without ampersand
+    std::function<void(Bar&, int&)> func_test = &Bar::func_test;
     std::function<void(int)> out_Bar_lambda = [&](int x) {
         std::cout << "Out bar lambda: " << std::endl;
         notInBar(amper);
     };
     const Bar bar(5437);
+    Bar bar1(7438);
     f_add(bar, 2);
     f_add(5437, 2);
     f_add_r(bar, 4);
     f_add_r(5437, 4);
     out_Bar_lambda(8349);
+    int pure = 64;
+    int& ref = pure;
+    f_add_nc(bar1, ref);
 
     auto result = std::async(operator+, Int{ 1 }, Int{ 1 });
     auto result2 = std::async(std::launch::async, Int(), 2);

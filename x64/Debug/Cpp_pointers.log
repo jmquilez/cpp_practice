@@ -1,4 +1,4 @@
-﻿Compilación iniciada a las 25/12/2021 19:46:58.
+﻿Compilación iniciada a las 25/12/2021 21:50:18.
 El nivel de detalle de registro está establecido en Normal.     1>Proyecto "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Cpp_pointers.vcxproj" en el nodo 2 (Build destinos).
      1>InitializeBuildStatus:
          Se creará "x64\Debug\Cpp_pointers.tlog\unsuccessfulbuild" porque se especificó "AlwaysCreate".
@@ -8,36 +8,29 @@ El nivel de detalle de registro está establecido en Normal.     1>Proyecto "C:\
          C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\CL.exe /c /I"C:\vcpkg\installed\\x64-windows\include" /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++latest /Fo"x64\Debug\\" /Fd"x64\Debug\vc142.pdb" /external:W3 /Gd /TP /FC /errorReport:prompt Source.cpp
          Source.cpp
      1>C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(71,19): warning C4244: 'return': conversión de 'double' a 'int'; posible pérdida de datos
-     1>C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(142): warning C4114: el mismo calificador de tipo se ha utilizado más de una vez
-     1>C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(142,23): warning C4114: el mismo calificador de tipo se ha utilizado más de una vez
-     1>C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(160,10): warning C4834: se descarta el valor devuelto de la función con el atributo "nodiscard"
-     1>C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(181): warning C4172: devolución de dirección de la variable local o temporal: total
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Debug\Cpp_pointers.exe" /INCREMENTAL /ILK:"x64\Debug\Cpp_pointers.ilk" /NOLOGO /LIBPATH:"C:\vcpkg\installed\\x64-windows\debug\lib" /LIBPATH:"C:\vcpkg\installed\\x64-windows\debug\lib\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "C:\vcpkg\installed\\x64-windows\debug\lib\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Debug\Cpp_pointers.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Debug\Cpp_pointers.lib" /MACHINE:X64 x64\Debug\Source.obj
-            Creando biblioteca C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Debug\Cpp_pointers.lib y objeto C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Debug\Cpp_pointers.exp
-         Cpp_pointers.vcxproj -> C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Debug\Cpp_pointers.exe
-       AppLocalFromInstalled:
-         pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Debug\Cpp_pointers.exe" "C:\vcpkg\installed\\x64-windows\debug\bin" "x64\Debug\Cpp_pointers.tlog\Cpp_pointers.write.1u.tlog" "x64\Debug\vcpkg.applocal.log"
-         "pwsh.exe" no se reconoce como un comando interno o externo,
-         programa o archivo por lotes ejecutable.
-         El comando "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Debug\Cpp_pointers.exe" "C:\vcpkg\installed\\x64-windows\debug\bin" "x64\Debug\Cpp_pointers.tlog\Cpp_pointers.write.1u.tlog" "x64\Debug\vcpkg.applocal.log"" salió con el código 9009.
-         "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "C:\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\x64\Debug\Cpp_pointers.exe" "C:\vcpkg\installed\\x64-windows\debug\bin" "x64\Debug\Cpp_pointers.tlog\Cpp_pointers.write.1u.tlog" "x64\Debug\vcpkg.applocal.log"
-       FinalizeBuildStatus:
-         Se eliminará el archivo "x64\Debug\Cpp_pointers.tlog\unsuccessfulbuild".
-         Aplicando tarea Touch a "x64\Debug\Cpp_pointers.tlog\Cpp_pointers.lastbuildstate".
-     1>Compilación del proyecto terminada "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Cpp_pointers.vcxproj" (Build destinos).
+     1>C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(152): warning C4114: el mismo calificador de tipo se ha utilizado más de una vez
+     1>C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(152,23): warning C4114: el mismo calificador de tipo se ha utilizado más de una vez
+     1>C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(154,61): error C3867: 'Bar::print_nc': sintaxis no estándar; utilice '&' para crear un puntero al miembro
+     1>C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(155,63): error C3867: 'Bar::func_test': sintaxis no estándar; utilice '&' para crear un puntero al miembro
+     1>C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(176,10): warning C4834: se descarta el valor devuelto de la función con el atributo "nodiscard"
+     1>Compilación del proyecto terminada "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Cpp_pointers.vcxproj" (Build destinos) -- ERROR.
 
-Compilación correcta.
+ERROR al compilar.
 
        "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Cpp_pointers.vcxproj" (Build destino) (1) ->
        (ClCompile destino) -> 
          C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(71,19): warning C4244: 'return': conversión de 'double' a 'int'; posible pérdida de datos
-         C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(142): warning C4114: el mismo calificador de tipo se ha utilizado más de una vez
-         C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(142,23): warning C4114: el mismo calificador de tipo se ha utilizado más de una vez
-         C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(160,10): warning C4834: se descarta el valor devuelto de la función con el atributo "nodiscard"
-         C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(181): warning C4172: devolución de dirección de la variable local o temporal: total
+         C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(152): warning C4114: el mismo calificador de tipo se ha utilizado más de una vez
+         C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(152,23): warning C4114: el mismo calificador de tipo se ha utilizado más de una vez
+         C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(176,10): warning C4834: se descarta el valor devuelto de la función con el atributo "nodiscard"
 
-    5 Advertencia(s)
-    0 Errores
 
-Tiempo transcurrido 00:00:03.30
+       "C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Cpp_pointers.vcxproj" (Build destino) (1) ->
+       (ClCompile destino) -> 
+         C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(154,61): error C3867: 'Bar::print_nc': sintaxis no estándar; utilice '&' para crear un puntero al miembro
+         C:\Users\J.Quilez\Desktop\Escritorio\cpp_tests\Cpp_pointers\Cpp_pointers\Source.cpp(155,63): error C3867: 'Bar::func_test': sintaxis no estándar; utilice '&' para crear un puntero al miembro
+
+    4 Advertencia(s)
+    2 Errores
+
+Tiempo transcurrido 00:00:01.11
