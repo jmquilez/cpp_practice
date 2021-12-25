@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <numeric>
 #include <future>
+#include <functional>
 
 
 std::map<std::string, std::string> g_pages;
@@ -41,7 +42,126 @@ void doSthDoubt(int& dols) {
 
 template <class... V>
 void print(V&&... args) { // --> not V&... args
+    //TODO: try a different thing?
     ((std::cout << std::forward<V>(args) << "\n"), ...);
+}
+
+struct Mult {
+private:
+    int fact;
+
+public:
+    Mult(int x) : fact(x) {}
+
+    int operator()(int oths) {
+        return fact * oths;
+    }
+};
+
+struct Pow {
+private:
+    int x = 4;
+
+public:
+    Pow(int p) : x(p) {}
+    Pow() : x(4) {}
+    //Pow(int p) : x(p){}
+    int operator()(int z) {
+        std::cout << "transformed vect " << z << ": " << pow(z, x) << std::endl;
+        return pow(z, x);
+    }
+};
+
+struct Int { 
+    int value;
+    //friend modifier?
+    //operator+()?
+
+    int operator()(int z) {
+        return z * 5;
+    }
+
+    /*friend int operator-(const int& x, const int& z) {
+        return x * z;
+    }
+    
+    int operator[](const int& x, const int& z) {
+        return x * z;
+    }
+
+    friend int operator=(const int& x, const int& z) {
+        return x * z;
+    }
+
+    friend int operator()(int z) {
+        return z * 5;
+    }*/
+
+    /*friend int operator()(const int& x, const int& z) {
+        return x * z;
+    }*/
+    
+    /*friend int operator+(const int& x, const int& z) {
+        return x + z;
+    }*/
+};
+
+Int operator+(const Int& lhs, const Int& rhs)
+{
+    return Int{ lhs.value + rhs.value };
+}
+
+struct Bar {
+    int num_;
+    Bar(int num) : num_(num) {}
+    void print_ad(int i) const {
+        std::cout << "Num intended: " << num_ + i << std::endl;
+    }
+};
+
+void notInBar(int& num) {
+    std::cout << "notInBar: " << num + 693734 << std::endl;
+}
+
+//template <typename X> --> if written, it has to be used compulsorily
+void transform() {
+    int vect[5] = { 1, 3, 5, 7, 9 };
+    for (int i = 0; i < 5; ++i) {
+        std::cout << "UnTransformed vect " << i << ": " << vect[i] << std::endl;
+    }
+    int ok = 5;
+    int& amper = ok;
+    int* ptrs0 = &ok;
+    int** ptrs1 = &ptrs0;
+    int*** ptrs2 = &ptrs1;
+
+    //int thed = Int(5);
+    //auto result = std::async(Int.operator+, Int{ 1 }, 2);
+
+    std::function<void(const Bar&, int)> f_add = &Bar::print_ad;
+    std::function<void(const Bar const&, int)> f_add_m = &Bar::print_ad;
+    std::function<void(Bar const&, int)> f_add_r = &Bar::print_ad;
+    std::function<void(int)> out_Bar_lambda = [&](int x) {
+        std::cout << "Out bar lambda: " << std::endl;
+        notInBar(amper);
+    };
+    const Bar bar(5437);
+    f_add(bar, 2);
+    f_add(5437, 2);
+    f_add_r(bar, 4);
+    f_add_r(5437, 4);
+    out_Bar_lambda(8349);
+
+    auto result = std::async(operator+, Int{ 1 }, Int{ 1 });
+    auto result2 = std::async(std::launch::async, Int(), 2);
+    std::cout << "from async0 I get " << result.get().value << "\n";
+    std::cout << "from async1 I get " << result2.get() << "\n";
+    std::transform(vect, vect + 5, vect, Pow(2));
+    std::async(std::launch::async, Pow(), 2);
+    for (int i = 0; i < 5; ++i) {
+        std::cout << "transformed vect " << i << ": " << vect[i] << std::endl;
+    }
+
 }
 
 struct X {
@@ -64,6 +184,7 @@ struct X {
         //std::cout << "I + 10: " << i + 10 << std::endl;
     }
 };
+
 
 template <typename RandomIt> //or "<class RandomIt>"
 int parallel_sum(RandomIt beg, RandomIt end)
@@ -152,6 +273,8 @@ void async() {
         std::cout << "Current bits i location: " << &bits[i] << std::endl;
     }
     
+    transform();
+
     //free(pntr);
     std::cin.get();
     free(bits);
