@@ -4,7 +4,7 @@
 #include <chrono>
 #include <thread>
 #include <mutex> //include <string>
-#include <format>
+//#include <format>
 #include <string>
 //#include <format>
 #include <vector>
@@ -12,6 +12,7 @@
 #include <numeric>
 #include <future>
 #include <functional>
+#include <cmath>
 
 
 std::map<std::string, std::string> g_pages;
@@ -131,6 +132,136 @@ void notInBar(int& num) {
     std::cout << "notInBar: " << num + 693734 << std::endl;
 }
 
+void takeFromOutside_(std::vector<int>& vect, std::string& st, /*void(*fun)(int&, std::string)*/ const std::function<void(int&, std::string)>& fun) {
+    for (auto& el : vect) {
+        fun(el, st);
+        //std::cout << "Taken from vector: " << el << ", int from outside: " << 
+    } 
+}
+
+void take_ptr_(std::vector<int>& vect, std::string& i, void(*fun)(int&, std::string)) {
+    for (auto& el : vect) {
+        fun(el, i);
+        
+    } 
+}
+
+/*void take_lambda_pointerr_(std::vector<int>& vect, std::string& i, void(*fun)(int&, std::string)) {
+    for (auto& el : vect) {
+        fun(el, i);
+        
+    } 
+}*/
+
+void doSth(int& x, std::string a) {
+    std::cout << "take_ptr_: " << x << ", " << a << std::endl;
+}
+
+//auto lambd = [](int& x, std::string a){ std::cout << "take_ptr_lambda_: " << x << ", " << a << std::endl; }; // --> not declarable as "void"
+
+//TODO: study namespaces
+//TODO: forward ref 
+//TODO: std::reference_wrapper
+
+void someRef_(int& x, std::vector<std::string>& vect, std::string(*func)(std::string&)) {
+    for (auto& es : vect) {
+        std::string st = (**func)(es); // --> does *func(es) work? --> it does not: // nor with &: src_nofmt.cpp:166:33: error: expression cannot be used as a function
+                                                                            /*src_nofmt.cpp: In function 'void someRef_(int&, std::vector<std::__cxx11::basic_string<char> >&, std::string (*)(std::string&))':
+                                                                            src_nofmt.cpp:166:26: error: no match for 'operator*' (operand type is 'std::string' {aka 'std::__cxx11::basic_string<char>'})
+                                                                            166 |         std::string st = *func(es);
+                                                                                |                          ^~~~~~~~~*/
+        std::cout << "Vector element: " << es << ", equis: " << x << ", lambda mod:   " << st << std::endl; 
+        std::cout << "func location: " << &func << std::endl;
+    }
+}
+
+void somePtr_(int& x, std::vector<std::string>& vect) {
+    for (auto& es : vect) {
+        std::cout << "Vector element from somePtr_: " << es << ", equis: " << x << std::endl;
+    }
+}
+
+const void somePtrConst_(int& x, std::vector<std::string>& vect) {
+    for (auto& es : vect) {
+        std::cout << "Vector element from somePtr_: " << es << ", equis: " << x << std::endl;
+    }
+}
+
+void ptrVsRef_() {
+    auto lambdaFun_ = [](std::string& p) -> std::string {
+        p = p + " _modified by lambda";
+        return p;
+    };
+    //void(&lambda_ref_)(std::string&) = lambdaFun_;
+
+    const int& ref = 10;
+    const int&& ref1 = 10;
+    int&& rv_ref = 10;
+
+    int f = 23;
+    int& f_ref = f;
+    int&& f_rva = 23;
+    std::vector<std::string> myVetc_ = { "You", "Are", "A", "Freaking", "Fallero" };
+    //cannot add more than one "*" to declare function pointer (ie "void(**somePtrPointed_)(int&, std::vector<std::string>&) = &somePtr_;")
+    //cannot add more than one "&" to "&somePtr_", (ie "void(*somePtrPointed_)(int&, std::vector<std::string>&) = &&somePtr_;")
+    //can only put 1 ampersand everywhere except from rvalue references and function references, where we can put up to 2 ampersands
+    int& f_ref1 = f_ref;
+    void(*somePtrPointedMinusOne_)(int&, std::vector<std::string>&) = somePtr_;
+    void(*somePtrPointed0_)(int&, std::vector<std::string>&) = &somePtr_;
+    void(**somePtrPointed1_)(int&, std::vector<std::string>&) = &somePtrPointed0_;
+    void(***somePtrPointed2_)(int&, std::vector<std::string>&) = &somePtrPointed1_;
+    void(****somePtrPointed3_)(int&, std::vector<std::string>&) = &somePtrPointed2_;
+    void(&somePtrReferenced0_)(int&, std::vector<std::string>&) = *somePtrPointed0_; // --> FIRST, read below line. Here, as we are declaring a lvalue reference, "somePtrPointed0_" is always going to be dereferenced to a function pointer and NOT a raw function because there is only one "&" in "&somePtrReferenced0_". So if we want to make it a rvalue function reference, we will have to explicitely write two "&" here: "&somePtrReferenced0_", so it will look like this "&&somePtrReferenced0_", just like below.
+    void(&&somePtrReferenced1_)(int&, std::vector<std::string>&) = *somePtrPointed0_; // --> as many "*" as you want; in this case, "somePtrReferenced0_" is a rvalue reference, and somePtrPointed0_ has to be dereferenced with at least one "*" because otherwise it is implicitly converted to a function pointer, as it is located at an rvalue context
+    void(&&somePtrReferenced2_)(int&, std::vector<std::string>&) = **somePtrPointed1_;
+    void(&&somePtrReferenced3_)(int&, std::vector<std::string>&) = ***somePtrPointed2_;
+    void(&&somePtrReferenced4_)(int&, std::vector<std::string>&) = ****somePtrPointed3_;
+    void(&somePtrReferenced5_)(int&, std::vector<std::string>&) = somePtr_;
+    void(&&somePtrReferenced6_)(int&, std::vector<std::string>&) = somePtr_;
+    void(&&somePtrReferenced7_)(int&, std::vector<std::string>&) = *somePtr_;
+
+    void(&somePtrReferencedOnce1_)(int&, std::vector<std::string>&) = **somePtrPointed1_;
+    void(&somePtrReferencedOnce2_)(int&, std::vector<std::string>&) = ***somePtrPointed2_;
+    void(&somePtrReferencedOnce3_)(int&, std::vector<std::string>&) = ****somePtrPointed3_;
+
+    const void(&somePtrConsted0_)(int&, std::vector<std::string>&) = somePtrConst_;
+
+    //void recout = std::cout << "Out" << std::endl; --> NOT POSSIBLE
+
+    //void(&someRealFunc_)() = std::reference_wrapper<void()> --> NOT POSSIBLE
+
+    /*void(&&someRealFunc_)(int&, std::vector<std::string>&) = (int& z, std::vector<std::string>& p) {
+       for (auto x : p) {
+           std::cout << "Current x is: " << x << ", and z int selected is: " << z << std::endl;
+       }
+    };*/
+    
+    
+    /*[](int& z, std::vector<std::string>& p) {
+       for (auto x : p) {
+           std::cout << "Current x is: " << x << ", and z int selected is: " << z << std::endl;
+       }
+    };*/
+
+    
+    //(&&somePtr_)(f, myVetc_); --> NOT POSSIBLE
+
+    //function pointers and raw functions are always converted to function pointers in rvalue context
+    
+    (****somePtr_)(f, myVetc_);
+    somePtrPointed0_(f, myVetc_);
+    (*somePtrPointed1_)(f, myVetc_);
+    (**somePtrPointed2_)(f, myVetc_);
+    (***somePtrPointed3_)(f, myVetc_);
+    somePtrReferenced4_(f, myVetc_);
+    (**************somePtrReferenced4_)(f, myVetc_);
+    
+    someRef_(f_ref, myVetc_, lambdaFun_);
+    
+    //someRef_(f_ref, myVetc_, lambda_ref_);
+}
+
+
 //template <typename X> --> if written, it has to be used compulsorily
 void transform() {
     int vect[5] = { 1, 3, 5, 7, 9 };
@@ -148,10 +279,16 @@ void transform() {
 
     Bar origBar(8743);
 
+    ////void(*fncPointer_)(int&, std::string);
+
+    int s = 33; 
+
+    auto fncPointer_ = [=](int& x, std::string a) mutable { s = 2; std::cout << "fncPointer_: " << x << ", " << a << std::endl; std::cout << "external rvalue reference: " << s << std::endl; };
+
     std::function<void(const Bar&, int)> f_add = &Bar::print_ad;
-    std::function<void(const Bar const&, int)> f_add_m = &Bar::print_ad;
+    std::function<void(Bar const&, int)> f_add_m = &Bar::print_ad;
     std::function<void(Bar const&, int)> f_add_r = &Bar::print_ad;
-    std::function<void(Bar&, int&)> f_add_nc = &Bar::print_nc; //cant go without ampersand
+    std::function<void(Bar, int&)> f_add_nc = &Bar::print_nc; //cant go without ampersand, but Bar& can go without it (at least in mac with g++)
     std::function<void(Bar&, int&)> func_test = &Bar::func_test;
     std::function<void(int)> out_Bar_lambda = [&](int x) {
         std::cout << "Out bar lambda: " << std::endl;
@@ -168,17 +305,42 @@ void transform() {
     int& ref = pure;
     f_add_nc(bar1, ref);
 
+    std::vector<int> theVect = { 1, 2, 3, 4, 5, 6 };
+    std::string trial = "takenFromOutside";
+    std::string dt = "doSth";
+    std::string lam = "lambdessa";
+    std::string& lsd = lam;
+    std::string lamer = "myFunlambda_ptrs_";
+
+    auto lambd = [](int& x, std::string a){ std::cout << "take_ptr_lambda_: " << x << ", " << a << std::endl; }; // --> not declarable as "void"
+    typedef void(*Lambda_ptr_)(int&, std::string);
+
+    //note: can only pass lambda as a function pointer only in case it doesnt capture anything
+    Lambda_ptr_ myFun {
+        [](int& x, std::string a){
+            std::cout << "Lambda_ptr_ my funs: " << x << ", " << a << std::endl;
+        }
+    };
+
+    takeFromOutside_(theVect, trial, fncPointer_);
+    take_ptr_(theVect, dt, &doSth);
+    take_ptr_(theVect, lsd, lambd);
+    take_ptr_(theVect, lamer, myFun);
+
     auto result = std::async(operator+, Int{ 1 }, Int{ 1 });
     auto result2 = std::async(std::launch::async, Int(), 2);
     std::cout << "from async0 I get " << result.get().value << "\n";
     std::cout << "from async1 I get " << result2.get() << "\n";
     std::transform(vect, vect + 5, vect, Pow(2));
-    std::async(std::launch::async, Pow(), 2);
+    //auto futur = std::async(std::launch::async, Pow(), 2);
     for (int i = 0; i < 5; ++i) {
         std::cout << "transformed vect " << i << ": " << vect[i] << std::endl;
     }
 
+    ptrVsRef_();
+
 }
+
 
 struct X {
     void foo(int i, const std::string& str) {
@@ -189,7 +351,19 @@ struct X {
         std::lock_guard<std::mutex> lk(m);
         std::cout << str << '\n';
     }
-    int *operator ()(int i) {
+
+    int operator ()(int i) {
+        std::lock_guard<std::mutex> lk(m);
+        std::cout << i << '\n';
+        int total = i + 10;
+        
+        return total;
+        ////return &total;
+        
+    }
+
+//private:
+    /*int *operator ()(int i) {
         std::lock_guard<std::mutex> lk(m);
         std::cout << i << '\n';
         int total = i + 10;
@@ -198,7 +372,7 @@ struct X {
         ////return &total;
         //return (i + 10);
         //std::cout << "I + 10: " << i + 10 << std::endl;
-    }
+    }*/
 };
 
 
@@ -230,6 +404,7 @@ void async() {
     // Calls X()(43); with async policy
     // prints "43" concurrently
     auto a3 = std::async(std::launch::async, X(), 43);
+    auto a4 = std::async(std::launch::async, x, 93); // --> if we add & before x, it has to be only for a function defined in x struct, not for an operator () in this case
     a2.wait();                     // prints "world!"
     //int result = *a3.get();
     int yes = 22;
@@ -266,7 +441,7 @@ void async() {
     //print("Refr: ", refr);
     print("\n");
     //free(pntr);
-    print("HexdecValue: ", std::format("{:#x}", refr));
+    //print("HexdecValue: ", std::format("{:#x}", refr));
     print("\n");
     //free(pntr);
     print("Pointer: ", pntr);
@@ -282,7 +457,9 @@ void async() {
     //std::cout << "UnFormatted_bits: " << bits << std::endl;
     ////int clse = &yes; --> not possible
     //std::cout << result << '\n'; // prints "53"
-    std::cout << a3.get() << '\n'; // prints memory address
+    std::cout << "a3.get: " << a3.get() << '\n'; //prints the num 53
+    std::cout << "a4.get: " << a4.get() << '\n'; //prints the num 53
+    //std::cout << a3.get() << '\n'; // prints memory address
     std::cout << "UnFormatted_bits: " << bits << std::endl;
     for (int i = 0; i < 5; i++) {
         std::cout << "Current bits i: " << bits[i] << std::endl;
@@ -359,14 +536,14 @@ int main()
     //std::cout << "join test" << std::endl;
     //t2.detach();
 
-    std::cout << "my int: " << std::format("{:#x}", inter) << std::endl;
+    //std::cout << "my int: " << std::format("{:#x}", inter) << std::endl;
     int* ptrs = &inter;
     std::cout << "Ptrs: " << ptrs << std::endl;
     
    
     
     for (const auto& pair : g_not_pointers) {
-        std::cout << "g_not_pointers 1: " << std::format("{:#x}", pair.first) << std::endl << "g_not_pointers 2: " << std::format("{:#x}", pair.second) << std::endl;
+        //std::cout << "g_not_pointers 1: " << std::format("{:#x}", pair.first) << std::endl << "g_not_pointers 2: " << std::format("{:#x}", pair.second) << std::endl;
         std::cout << "locations: " << &pair.first << " => " << &pair.second << '\n';
         std::cout << pair.first << " => " << pair.second << '\n';
     }
